@@ -1,0 +1,11 @@
+### ARCHIVO 3: `dataset_estudiantes.csv` (Datos de entrenamiento)
+
+Crea un archivo nuevo en GitHub (Botón **`+`** ➔ **Create new file**), llámalo `dataset_estudiantes.csv` y pega este texto:
+
+```csv
+estudiante_id,item_evaluado,respuesta_usuario,respuesta_correcta,es_correcto,tiempo_seg,estado_bkt
+EST-101,PRESENT_SIMPLE,"She go to school","She goes to school",0,15,0.35
+EST-101,PRESENT_SIMPLE,"He plays soccer","He plays soccer",1,8,0.58
+EST-102,PAST_CONTINUOUS,"They was walking","They were walking",0,45,0.22
+EST-103,VERB_TO_BE,"I am student","I am a student",0,12,0.41
+EST-104,VOCABULARY_BASIC,"Aplle","Apple",0,5,0.85
