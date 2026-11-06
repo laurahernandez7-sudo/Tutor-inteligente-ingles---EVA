@@ -28,11 +28,11 @@ class DecisionAgente:
 class AccionTutor:
     def ejecutar(self, accion):
         if accion == "ALERTA_DOCENTE":
-            print("⚠️ Alerta enviada al profesor: El alumno lleva >45 min atascado.")
+            print(" Alerta enviada al profesor: El alumno lleva >45 min atascado.")
         elif accion == "PISTA_DESPISTE":
-            print("💡 Pista: ¿Revisaste bien la ortografía de la palabra?")
+            print(" Pista: ¿Revisaste bien la ortografía de la palabra?")
         elif accion == "REFORZAR_GRAMATICA":
-            print("📚 Tutor: Te sugiero revisar esta regla del verbo 'To Be'.")
+            print(" Tutor: Te sugiero revisar esta regla del verbo 'To Be'.")
 
 
 if __name__ == "__main__":
