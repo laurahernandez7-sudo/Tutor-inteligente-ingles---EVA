@@ -1,0 +1,48 @@
+
+class PercepcionEstudiante:
+    def __init__(self, historial_respuestas, tiempo_resolucion_min):
+        self.historial = historial_respuestas
+        self.tiempo = tiempo_resolucion_min
+
+    def evaluar_nivel_bkt(self):
+        if len(self.historial) < 5:
+            return "Principiante (Evaluando nivel inicial...)"
+        return "Nivel Intermedio"
+
+    def diagnosticar_error(self, respuesta_usuario, respuesta_correcta):
+        if abs(len(respuesta_usuario) - len(respuesta_correcta)) <= 1 and respuesta_usuario[:2] == respuesta_correcta[:2]:
+            return "DESPISTE (Slip)"
+        return "VACIO_GRAMATICAL (Concepto no aprendido)"
+
+
+class DecisionAgente:
+    def seleccionar_accion(self, tipo_error, tiempo_estancado):
+        if tiempo_estancado > 45:
+            return "ALERTA_DOCENTE"
+        elif tipo_error == "DESPISTE":
+            return "PISTA_DESPISTE"
+        else:
+            return "REFORZAR_GRAMATICA"
+
+
+class AccionTutor:
+    def ejecutar(self, accion):
+        if accion == "ALERTA_DOCENTE":
+            print("⚠️ Alerta enviada al profesor: El alumno lleva >45 min atascado.")
+        elif accion == "PISTA_DESPISTE":
+            print("💡 Pista: ¿Revisaste bien la ortografía de la palabra?")
+        elif accion == "REFORZAR_GRAMATICA":
+            print("📚 Tutor: Te sugiero revisar esta regla del verbo 'To Be'.")
+
+
+if __name__ == "__main__":
+    print("--- INICIANDO TUTOR INTELIGENTE DE INGLÉS ---")
+    estudiante = PercepcionEstudiante(historial_respuestas=[1, 0, 1], tiempo_resolucion_min=50)
+    error = estudiante.diagnosticar_error(respuesta_usuario="he go", respuesta_correcta="he goes")
+    print(f"Diagnóstico de la IA: {error}")
+    
+    motor = DecisionAgente()
+    accion = motor.seleccionar_accion(tipo_error=error, tiempo_estancado=estudiante.tiempo)
+    
+    tutor = AccionTutor()
+    tutor.ejecutar(accion)
